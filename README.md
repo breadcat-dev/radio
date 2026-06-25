@@ -21,19 +21,19 @@ private static final Logger LOGGER = new LoggerBuilder(TestClass.class)
 
 public void init()
 {
-  LOGGER.info("Initializing Test Class..");
+    LOGGER.info("Initializing Test Class..");
 
-  try
-  {
-    // ...
-  }
-  catch(IOException e)
-  {
-    LOGGER.error("Failed to open File \"" + filename + "\"", e);
-    return;
-  }
+    try
+    {
+        // ...
+    }
+    catch(IOException e)
+    {
+        LOGGER.error("Failed to open File \"" + filename + "\"", e);
+        return;
+    }
 
-  LOGGER.ok("Initialization complete");
+    LOGGER.ok("Initialization complete");
 }
 ```
 
@@ -48,12 +48,12 @@ private static final Logger LOGGER = new LoggerBuilder(ChatPacketHandler.class)
 
 public void handle(ChatPacket packet)
 {
-  if(packet == null)
-    return;
+    if(packet == null)
+        return;
 
-  LOGGER.info(packet.text());
+    LOGGER.info(packet.text());
 
-  // ...
+    // ...
 }
 ```
 

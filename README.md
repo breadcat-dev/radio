@@ -171,5 +171,5 @@ final Logger LOGGER = new LoggerBuilder(Main.class)
         .build();
 ```
 
-# Dependencies:
+## Dependencies:
 - Toolbox: `cat.breadcat:toolbox:[VERSION]` [Github](https://github.com/breadcat-dev/toolbox)

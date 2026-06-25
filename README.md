@@ -172,4 +172,4 @@ final Logger LOGGER = new LoggerBuilder(Main.class)
 ```
 
 # Dependencies:
-- Toolbox: `cat.breadcat:toolbox:[VERSION]` Github (*Currently unavailable*)
+- Toolbox: `cat.breadcat:toolbox:[VERSION]` [Github](https://github.com/breadcat-dev/toolbox)

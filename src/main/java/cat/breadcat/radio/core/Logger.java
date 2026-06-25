@@ -3,7 +3,7 @@ package cat.breadcat.radio.core;
 import cat.breadcat.radio.level.DefaultLogLevel;
 import cat.breadcat.radio.level.LogLevel;
 import cat.breadcat.radio.sink.LogSink;
-import cat.breadcat.toolbox.StringUtil;
+import cat.breadcat.toolbox.utils.StringUtil;
 
 import java.time.LocalDateTime;
 import java.util.List;

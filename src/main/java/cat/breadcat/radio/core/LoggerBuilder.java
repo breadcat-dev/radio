@@ -4,7 +4,7 @@ import cat.breadcat.radio.formatter.LogFormatter;
 import cat.breadcat.radio.sink.ConsoleSink;
 import cat.breadcat.radio.sink.FileSink;
 import cat.breadcat.radio.sink.LogSink;
-import cat.breadcat.toolbox.FileUtil;
+import cat.breadcat.toolbox.utils.FileUtil;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

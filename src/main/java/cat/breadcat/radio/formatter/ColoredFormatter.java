@@ -1,7 +1,7 @@
 package cat.breadcat.radio.formatter;
 
 import cat.breadcat.radio.core.LogRecord;
-import cat.breadcat.toolbox.AnsiUtil;
+import cat.breadcat.toolbox.utils.AnsiUtil;
 
 import java.time.format.DateTimeFormatter;
 

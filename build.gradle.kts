@@ -1,10 +1,11 @@
 plugins {
     id("java")
     id("maven-publish")
+    id("me.champeau.jmh") version "0.7.2"
 }
 
 group = "cat.breadcat"
-version = "1.0.2"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -13,6 +14,14 @@ repositories {
 
 dependencies {
     implementation("cat.breadcat:toolbox:1.3.1")
+
+    testImplementation(platform("org.junit:junit-bom:6.0.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 publishing {
@@ -24,3 +33,4 @@ publishing {
         }
     }
 }
+

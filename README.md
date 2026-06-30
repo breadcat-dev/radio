@@ -1,19 +1,72 @@
-# Radio - Lightweight & Reliable logging library for Java
-### Part of my TANK Series
+# Radio
 
-## Status
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![Java](https://img.shields.io/badge/Java-21-blue)
+![Status](https://img.shields.io/badge/status-experimental-orange)
+![Release](https://img.shields.io/github/v/release/breadcat-dev/radio)
 
-EXPERIMENTAL - API might change in the future
+> Flexible logging library for Java
 
-## What it does
-- Fast logging API
-- Structured log levels
-- Highly customizable
-- Sink and formatter support
+Part of the TANK Series.
 
-## Examples
+---
 
-Console only
+## Features
+
+- Configurable log levels
+- Multiple output sinks
+- Custom formatters
+- Builder-based configuration
+- Console and file logging by default
+
+## Installation
+
+Currently, Radio is not on Maven Central.
+To use it, clone the repository and publish it to your local Maven Repository.
+
+
+```sh
+git clone https://github.com/breadcat-dev/radio.git
+cd radio
+```
+
+### Linux / MacOS
+```sh
+./gradlew publishToMavenLocal
+```
+### Windows
+```sh
+./gradlew.bat publishToMavenLocal
+```
+
+Once installed, add the dependency:
+
+### Groovy
+```gradle
+implementation "cat.breadcat:radio:<version>"
+```
+
+### Kotlin DSL
+```gradle
+implementation("cat.breadcat:radio:<version>");
+```
+
+## Quick Example
+
+```java
+Logger logger = new LoggerBuilder(Main.class)
+        .console(ColoredFormatter.INSTANCE)
+        .build();
+
+logger.info("hello");
+```
+
+> [<span style="color:#56B6C2">2026-06-30 16:20:31</span>] [<span style="color:#D19A66">Main</span>] [<span style="color:#61AFEF">INFO</span>] hellooo
+
+
+## Advanced Examples
+
+### Console only
 ```java
 private static final Logger LOGGER = new LoggerBuilder(TestClass.class)
         .console(ColoredFormatter.INSTANCE)
@@ -37,14 +90,12 @@ public void init()
 }
 ```
 
-Console + File
+### Console + File
 ```java
 private static final Logger LOGGER = new LoggerBuilder(ChatPacketHandler.class)
         .console(ColoredFormatter.INSTANCE)
         .file(PlainFormatter.INSTANCE, Path.of("./chat.log"))
         .build();
-
-// ...
 
 public void handle(ChatPacket packet)
 {
@@ -57,10 +108,12 @@ public void handle(ChatPacket packet)
 }
 ```
 
-Custom Log Levels
+### Custom Log Levels
 ```java
 public final class NetworkLogLevel
 {
+    private NetworkLogLevel() {}
+    
     public static final LogLevel PACKET_IN = new LogLevel("PACKET_IN", 0, AnsiUtil.YELLOW);
     public static final LogLevel PACKET_OUT = new LogLevel("PACKET_OUT", 0, AnsiUtil.YELLOW);
     public static final LogLevel CONNECTION = new LogLevel("CONNECTION", 2, AnsiUtil.YELLOW);
@@ -68,7 +121,7 @@ public final class NetworkLogLevel
 }
 ```
 
-Custom Wrapper
+### Custom Wrapper
 ```java
 public final class NetworkLogger
 {
@@ -78,7 +131,6 @@ public final class NetworkLogger
     {
         this.logger = logger;
     }
-
 
 
     public void connection(Connection connection, Object... args)
@@ -91,7 +143,7 @@ public final class NetworkLogger
 }
 ```
 
-Custom Formatter
+### Custom Formatter
 ```java
 public final class SimplePlainFormatter extends LogFormatter
 {
@@ -107,8 +159,8 @@ public final class SimplePlainFormatter extends LogFormatter
     @Override
     public String format(LogRecord record)
     {
-        // String time = record.timestamp().format(TIMESTAMP_FORMATTER);
-        // String clazz = record.clazz();
+        /* String time = record.timestamp().format(TIMESTAMP_FORMATTER);
+        String clazz = record.clazz(); */
         String level = record.level().name();
         String text = record.text();
 
@@ -118,7 +170,8 @@ public final class SimplePlainFormatter extends LogFormatter
 }
 ```
 
-Custom Sink
+### Custom Sink
+
 ```java
 public final class ErrorSink extends LogSink
 {
@@ -135,41 +188,52 @@ public final class ErrorSink extends LogSink
     }
 }
 ```
-(LogSink for reference)
-```java
-public abstract class LogSink
-{
-    protected final LogFormatter formatter;
-    protected final PrintStream out;
 
-    public LogSink(LogFormatter formatter, PrintStream out)
-    {
-        this.formatter = formatter;
-        this.out = out;
-    }
+### Usage
 
-
-    protected String format(LogRecord record)
-    {
-        return formatter.format(record);
-    }
-
-    public void raw(String text)
-    {
-        out.println(text);
-    }
-
-
-    public abstract void log(LogRecord record);
-}
-```
-
-Usage
 ```java
 final Logger LOGGER = new LoggerBuilder(Main.class)
         .sink(new ErrorSink(SimplePlainFormatter.INSTANCE))
         .build();
 ```
 
+# Performance
+
+| Benchmark                                    | Mode | Cnt | Score      | Error   | Units |
+|----------------------------------------------|------|-----|------------|---------|-------|
+| BenchmarkLogger.initializationConsole        | avgt | 3   | 1.080 ±    | 0.058   | ns/op |
+| BenchmarkLogger.initializationConsoleAndFile | avgt | 3   | 3177.254 ± | 317.104 | ns/op |
+| BenchmarkLogger.logInfo                      | avgt | 3   | 61.724 ±   | 1.763   | ns/op |
+| BenchmarkLogger.logInfoManually              | avgt | 3   | 63.721 ±   | 1.116   | ns/op |
+
+> Results measured using JMH (AverageTime, 3 iterations, 2 warmup iterations, OpenJDK 21)
+
+[ ! ] Benchmark note: `.logInfo()` and `.logInfoManually` use a no-op sink to isolate logging dispatch cost (no IO involved).
+```java
+public final class BenchmarkSink extends LogSink
+{
+    public BenchmarkSink(LogFormatter formatter, PrintStream out)
+    {
+        super(formatter, out);
+    }
+
+    @Override
+    public void log(LogRecord record)
+    {
+
+    }
+}
+```
+
+## Design Goals
+
+- Extensible
+- Clean API
+- Fast
+
+## Status
+
+Experimental.
+
 ## Dependencies:
-- Toolbox: `cat.breadcat:toolbox:[VERSION]` [Github](https://github.com/breadcat-dev/toolbox)
+- Toolbox - [Github](https://github.com/breadcat-dev/toolbox)

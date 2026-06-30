@@ -4,6 +4,14 @@ import cat.breadcat.radio.core.LogRecord;
 
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Plain text {@link LogFormatter}
+ *
+ * <p>Formats {@link LogRecord} as:
+ *   [TIMESTAMP] [CLASS] [LEVEL] TEXT</p>
+ *
+ * <p>This formatter is stateless and exposes a reusable singleton instance via {@link #INSTANCE}.</p>
+ */
 public final class PlainFormatter extends LogFormatter
 {
     public static final PlainFormatter INSTANCE = new PlainFormatter();
@@ -19,12 +27,12 @@ public final class PlainFormatter extends LogFormatter
     public String format(LogRecord record)
     {
         String time = record.timestamp().format(TIMESTAMP_FORMATTER);
-        String clazz = record.clazz();
+        String className = record.className();
         String level = record.level().name();
         String text = record.text();
 
         return "[" + time + "] ["
-                + clazz + "] ["
+                + className + "] ["
                 + level + "] "
                 + text;
     }

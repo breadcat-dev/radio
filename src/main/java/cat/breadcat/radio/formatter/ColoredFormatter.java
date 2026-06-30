@@ -5,6 +5,14 @@ import cat.breadcat.toolbox.utils.AnsiUtil;
 
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Colored text {@link LogFormatter}
+ *
+ * <p>Formats {@link LogRecord} as:
+ *   [TIMESTAMP] [CLASS] [LEVEL] TEXT</p>
+ *
+ * <p>This formatter is stateless and exposes a reusable singleton instance via {@link #INSTANCE}.</p>
+ */
 public final class ColoredFormatter extends LogFormatter
 {
     public static final ColoredFormatter INSTANCE = new ColoredFormatter();

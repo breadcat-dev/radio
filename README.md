@@ -230,6 +230,6 @@ public final class BenchmarkSink extends LogSink
 - Extensible
 - Clean API
 - Fast
-- 
+
 ## Dependencies:
 - Toolbox - [Github](https://github.com/breadcat-dev/toolbox)

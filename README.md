@@ -61,7 +61,7 @@ Logger logger = new LoggerBuilder(Main.class)
 logger.info("hello");
 ```
 
-> [<span style="color:#56B6C2">2026-06-30 16:20:31</span>] [<span style="color:#D19A66">Main</span>] [<span style="color:#61AFEF">INFO</span>] hellooo
+> [2026-06-30 16:20:31] [Main] [INFO] hellooo
 
 
 ## Advanced Examples

@@ -4,7 +4,7 @@ import cat.breadcat.radio.formatter.LogFormatter;
 import cat.breadcat.radio.sink.ConsoleSink;
 import cat.breadcat.radio.sink.FileSink;
 import cat.breadcat.radio.sink.LogSink;
-import cat.breadcat.toolbox.utils.FileUtil;
+import cat.breadcat.toolbox.util.FileIOUtil;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -82,7 +82,7 @@ public final class LoggerBuilder
     {
         try
         {
-            FileUtil.createDirectories(path);
+            FileIOUtil.createDirectories(path);
 
             PrintStream out = new PrintStream(
                     new FileOutputStream(

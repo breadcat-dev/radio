@@ -19,6 +19,13 @@ Part of the TANK Series.
 - Builder-based configuration
 - Console and file logging by default
 
+## Design Goals
+
+- Extensible
+- Clean API
+- Fast
+
+
 ## Installation
 
 Currently, Radio is not on Maven Central.
@@ -48,7 +55,7 @@ implementation "cat.breadcat:radio:<version>"
 
 ### Kotlin DSL
 ```gradle
-implementation("cat.breadcat:radio:<version>");
+implementation("cat.breadcat:radio:<version>")
 ```
 
 ## Quick Example
@@ -224,12 +231,6 @@ public final class BenchmarkSink extends LogSink
     }
 }
 ```
-
-## Design Goals
-
-- Extensible
-- Clean API
-- Fast
 
 ## Dependencies:
 - Toolbox - [Github](https://github.com/breadcat-dev/toolbox)

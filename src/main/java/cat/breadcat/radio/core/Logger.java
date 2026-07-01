@@ -3,7 +3,7 @@ package cat.breadcat.radio.core;
 import cat.breadcat.radio.level.DefaultLogLevel;
 import cat.breadcat.radio.level.LogLevel;
 import cat.breadcat.radio.sink.LogSink;
-import cat.breadcat.toolbox.utils.StringUtil;
+import cat.breadcat.toolbox.util.StringUtil;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -47,7 +47,7 @@ public final class Logger
         if(level.priority() < minimum)
             return;
 
-        String text = StringUtil.join(args);
+        String text = StringUtil.join(" ", args);
         LogRecord record = new LogRecord(LocalDateTime.now(), className, level, text);
 
         for(LogSink sink : sinks)

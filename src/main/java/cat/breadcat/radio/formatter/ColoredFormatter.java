@@ -1,7 +1,7 @@
 package cat.breadcat.radio.formatter;
 
 import cat.breadcat.radio.core.LogRecord;
-import cat.breadcat.toolbox.utils.AnsiUtil;
+import cat.breadcat.toolbox.util.AnsiUtil;
 
 import java.time.format.DateTimeFormatter;
 
@@ -30,12 +30,12 @@ public final class ColoredFormatter extends LogFormatter
     public String format(LogRecord record)
     {
         String time = TIMESTAMP_COLOR + record.timestamp().format(TIMESTAMP_FORMATTER) + AnsiUtil.RESET;
-        String clazz = CLASS_COLOR + record.clazz() + AnsiUtil.RESET;
+        String className = CLASS_COLOR + record.className() + AnsiUtil.RESET;
         String level = record.level().color() + record.level().name() + AnsiUtil.RESET;
         String text = record.text();
 
         return "[" + time + "] ["
-                + clazz + "] ["
+                + className + "] ["
                 + level + "] "
                 + text;
     }

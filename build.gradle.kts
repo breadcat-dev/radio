@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "cat.breadcat"
-version = "1.1.0"
+version = "1.2.0"
 
 repositories {
     mavenCentral()
@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation("cat.breadcat:toolbox:1.3.1")
+    implementation("cat.breadcat:toolbox:2.0.0")
 
     testImplementation(platform("org.junit:junit-bom:6.0.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
@@ -29,7 +29,7 @@ publishing {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
 
-            artifactId = rootProject.name;
+            artifactId = rootProject.name
         }
     }
 }

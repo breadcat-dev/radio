@@ -1,6 +1,6 @@
 package cat.breadcat.radio.level;
 
-import cat.breadcat.toolbox.utils.AnsiUtil;
+import cat.breadcat.toolbox.util.AnsiUtil;
 
 public final class DefaultLogLevel
 {

@@ -20,7 +20,7 @@ public final class FileSink extends LogSink implements AutoCloseable
     }
 
     @Override
-    public void close() throws Exception
+    public void close()
     {
         out.close();
     }

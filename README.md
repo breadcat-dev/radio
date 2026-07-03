@@ -19,12 +19,15 @@ Part of the TANK Series.
 - Builder-based configuration
 - Console and file logging by default
 
+---
+
 ## Design Goals
 
 - Extensible
 - Clean API
 - Fast
 
+---
 
 ## Installation
 
@@ -58,6 +61,8 @@ implementation "cat.breadcat:radio:<version>"
 implementation("cat.breadcat:radio:<version>")
 ```
 
+---
+
 ## Quick Example
 
 ```java
@@ -70,6 +75,7 @@ logger.info("hello");
 
 > [2026-06-30 16:20:31] [Main] [INFO] hellooo
 
+---
 
 ## Advanced Examples
 
@@ -204,7 +210,9 @@ final Logger LOGGER = new LoggerBuilder(Main.class)
         .build();
 ```
 
-# Performance
+---
+
+## Performance
 
 | Benchmark                                    | Mode | Cnt | Score      | Error   | Units |
 |----------------------------------------------|------|-----|------------|---------|-------|
@@ -231,6 +239,8 @@ public final class BenchmarkSink extends LogSink
     }
 }
 ```
+
+---
 
 ## Dependencies:
 - Toolbox - [Github](https://github.com/breadcat-dev/toolbox)

@@ -19,8 +19,6 @@ Part of the TANK Series.
 - Builder-based configuration
 - Console and file logging by default
 
----
-
 ## Design Goals
 
 - Extensible

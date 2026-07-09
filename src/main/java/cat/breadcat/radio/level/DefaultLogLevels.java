@@ -2,10 +2,9 @@ package cat.breadcat.radio.level;
 
 import cat.breadcat.toolbox.util.AnsiUtil;
 
-public final class DefaultLogLevel
+public final class DefaultLogLevels
 {
-    private DefaultLogLevel() {}
-
+    private DefaultLogLevels() {}
 
     public static final LogLevel INFO = new LogLevel("INFO", 1, AnsiUtil.BLUE);
     public static final LogLevel OK = new LogLevel("OK", 1, AnsiUtil.GREEN);

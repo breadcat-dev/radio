@@ -4,15 +4,7 @@ import cat.breadcat.radio.core.LogRecord;
 
 import java.time.format.DateTimeFormatter;
 
-/**
- * Plain text {@link LogFormatter}
- *
- * <p>Formats {@link LogRecord} as:
- *   [TIMESTAMP] [CLASS] [LEVEL] TEXT</p>
- *
- * <p>This formatter is stateless and exposes a reusable singleton instance via {@link #INSTANCE}.</p>
- */
-public final class PlainFormatter extends LogFormatter
+public final class PlainFormatter implements LogFormatter
 {
     public static final PlainFormatter INSTANCE = new PlainFormatter();
 

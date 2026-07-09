@@ -5,18 +5,27 @@ import cat.breadcat.radio.formatter.LogFormatter;
 
 import java.io.PrintStream;
 
-public final class FileSink extends LogSink implements AutoCloseable
+public final class FileSink implements LogSink, AutoCloseable
 {
+    private final LogFormatter formatter;
+    private final PrintStream out;
+
     public FileSink(LogFormatter formatter, PrintStream out)
     {
-        super(formatter, out);
+        this.formatter = formatter;
+        this.out = out;
     }
 
 
     @Override
     public void log(LogRecord record)
     {
-        out.println(format(record));
+        out.println(formatter.format(record));
+    }
+    @Override
+    public void raw(String text)
+    {
+        out.println(text);
     }
 
     @Override

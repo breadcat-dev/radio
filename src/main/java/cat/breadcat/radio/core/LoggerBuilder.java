@@ -1,11 +1,10 @@
 package cat.breadcat.radio.core;
 
 import cat.breadcat.radio.formatter.LogFormatter;
-import cat.breadcat.radio.level.DefaultLogLevels;
 import cat.breadcat.radio.sink.ConsoleSink;
 import cat.breadcat.radio.sink.FileSink;
 import cat.breadcat.radio.sink.LogSink;
-import cat.breadcat.toolbox.util.FileIOUtil;
+import cat.breadcat.toolbox.util.FileIOUtils;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -49,7 +48,7 @@ public final class LoggerBuilder
     {
         try
         {
-            FileIOUtil.createDirectories(path);
+            FileIOUtils.createDirectories(path);
 
             PrintStream out = new PrintStream(
                     new FileOutputStream(

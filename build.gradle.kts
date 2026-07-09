@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "cat.breadcat"
-version = "2.0.0"
+version = "2.0.1"
 
 repositories {
     mavenCentral()
@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation("cat.breadcat:toolbox:2.0.0")
+    implementation("cat.breadcat:toolbox:2.2.1")
 
     testImplementation(platform("org.junit:junit-bom:6.0.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")

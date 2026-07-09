@@ -3,7 +3,7 @@ package cat.breadcat.radio.core;
 import cat.breadcat.radio.level.DefaultLogLevels;
 import cat.breadcat.radio.level.LogLevel;
 import cat.breadcat.radio.sink.LogSink;
-import cat.breadcat.toolbox.util.StringUtil;
+import cat.breadcat.toolbox.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -37,7 +37,7 @@ public final class Logger implements AutoCloseable
         if(args.length == 1)
             text = args[0].toString();
         else
-            text = StringUtil.join(" ", args);
+            text = StringUtils.join(" ", args);
         LogRecord record = new LogRecord(LocalDateTime.now(), className, level, text);
 
         for(LogSink sink : sinks)

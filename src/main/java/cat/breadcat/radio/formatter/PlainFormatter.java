@@ -23,9 +23,9 @@ public final class PlainFormatter implements LogFormatter
         String level = record.level().name();
         String text = record.text();
 
-        return "[" + time + "] ["
-                + className + "] ["
-                + level + "] "
-                + text;
+        return "[" + time + "] [" +
+                className + "] [" +
+                level + "] " +
+                text;
     }
 }
